@@ -1,0 +1,439 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.holixon.axon</groupId>
+  <artifactId>axon-framework-bom</artifactId>
+  <version>4.4.6-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+  <description>jgiven kotlin extension</description>
+  <url>https://github.com/holixon/axon-framework-bom/</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <kotlin.version>1.4.21-2</kotlin.version>
+    <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+
+    <axon-framework.version>4.4.6</axon-framework.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-configuration</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-disruptor</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-eventsourcing</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-legacy</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-messaging</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-metrics</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-micrometer</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-modelling</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-server-connector</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-spring</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-spring-boot-autoconfigure</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-spring-boot-starter</artifactId>
+        <version>${axon-framework.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-test</artifactId>
+        <version>${axon-framework.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.axonframework</groupId>
+        <artifactId>axon-spring-boot-test</artifactId>
+        <version>${axon-framework.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>bintray.kotlin.eap</id>
+      <name>Bintray Kotlin EAP Repository</name>
+      <url>https://dl.bintray.com/kotlin/kotlin-eap</url>
+    </repository>
+  </repositories>
+
+  <build>
+    <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <!-- cleaning -->
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+
+        <!-- Coverage metering -->
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.6</version>
+          <executions>
+            <execution>
+              <id>pre-unit-test</id>
+              <goals>
+                <goal>prepare-agent</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>pre-integration-test</id>
+              <goals>
+                <goal>prepare-agent-integration</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- JavaDoc for Java and KDoc for Kotlin -->
+        <plugin>
+          <groupId>org.jetbrains.dokka</groupId>
+          <artifactId>dokka-maven-plugin</artifactId>
+          <version>1.4.20</version>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <phase>package</phase>
+              <goals>
+                <goal>dokka</goal>
+                <goal>javadocJar</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <sourceLinks>
+              <link>
+                <path>${project.basedir}</path>
+                <url>https://github.com/holixon/axon-framework-bom/blob/master</url>
+                <lineSuffix>#L</lineSuffix>
+              </link>
+            </sourceLinks>
+            <jdkVersion>11</jdkVersion>
+            <sourceDirectories>
+              <dir>${project.basedir}/src/main/kotlin</dir>
+            </sourceDirectories>
+          </configuration>
+        </plugin>
+        <!-- Source from kotlin -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>3.2.0</version>
+          <executions>
+            <execution>
+              <phase>generate-sources</phase>
+              <goals>
+                <goal>add-source</goal>
+              </goals>
+              <configuration>
+                <sources>
+                  <source>${project.basedir}/src/main/kotlin</source>
+                </sources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- attach sources -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.2.1</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <phase>package</phase>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+              <configuration>
+                <attach>true</attach>
+                <forceCreation>true</forceCreation>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- gitflow -->
+        <plugin>
+          <groupId>com.amashchenko.maven.plugin</groupId>
+          <artifactId>gitflow-maven-plugin</artifactId>
+          <version>1.15.1</version>
+          <configuration>
+            <gitFlowConfig>
+              <productionBranch>master</productionBranch>
+              <developmentBranch>develop</developmentBranch>
+              <featureBranchPrefix>feature/</featureBranchPrefix>
+              <releaseBranchPrefix>release/</releaseBranchPrefix>
+              <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+              <supportBranchPrefix>support/</supportBranchPrefix>
+              <origin>origin</origin>
+            </gitFlowConfig>
+            <useSnapshotInHotfix>true</useSnapshotInHotfix>
+            <useSnapshotInRelease>true</useSnapshotInRelease>
+            <keepBranch>false</keepBranch>
+            <pushRemote>true</pushRemote>
+          </configuration>
+        </plugin>
+
+        <!-- To sign the artifacts -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+          <configuration>
+            <keyname>${gpg.keyname}</keyname>
+            <gpgArguments>
+              <arg>--batch</arg>
+              <arg>--yes</arg>
+              <arg>--pinentry-mode</arg>
+              <arg>loopback</arg>
+            </gpgArguments>
+          </configuration>
+          <executions>
+            <execution>
+              <id>sign-artifacts</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>sign</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Deploy -->
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.0.0-M1</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>1.6.8</version>
+          <executions>
+            <execution>
+              <id>default-deploy</id>
+              <phase>deploy</phase>
+              <goals>
+                <goal>deploy</goal>
+              </goals>
+              <configuration>
+                <serverId>ossrh</serverId>
+                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                <keepStagingRepositoryOnCloseRuleFailure>true
+                </keepStagingRepositoryOnCloseRuleFailure><!-- go to oss.nexus.org and inspect the failure -->
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- Install -->
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+
+        <!-- Enforce -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.0.0-M3</version>
+          <executions>
+            <execution>
+              <id>enforce-maven</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>3.6.0</version>
+                  </requireMavenVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <!--
+      Profile creating all artifacts: JARs, POMs, Sources, JavaDoc and all signatures.
+    -->
+    <profile>
+      <id>release</id>
+      <activation>
+        <property>
+          <name>release</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.jetbrains.dokka</groupId>
+            <artifactId>dokka-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:holixon/axon-framework-bom.git</connection>
+    <url>scm:git:git@github.com:holixon/axon-framework-bom.git</url>
+    <developerConnection>scm:git:git@github.com:holixon/axon-framework-bom.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <distributionManagement>
+    <site>
+      <id>README</id>
+      <url>https://github.com/holixon/axon-framework-bom</url>
+    </site>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <pluginRepositories>
+    <!-- required for Dokka (KDoc) and Orchid (Docs) -->
+    <pluginRepository>
+      <id>jcenter</id>
+      <name>JCenter</name>
+      <url>https://jcenter.bintray.com/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+    <pluginRepository>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>bintray.kotlin.eap</id>
+      <name>Bintray Kotlin EAP Repository</name>
+      <url>https://dl.bintray.com/kotlin/kotlin-eap</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <developers>
+    <developer>
+      <name>Jan Galinski</name>
+      <roles>
+        <role>Product Owner</role>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+  </developers>
+</project>

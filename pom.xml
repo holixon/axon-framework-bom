@@ -4,7 +4,7 @@
 
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
-  <version>4.4.7</version>
+  <version>4.4.8</version>
   <name>${project.artifactId}</name>
   <description>jgiven kotlin extension</description>
   <url>https://github.com/holixon/axon-framework-bom/</url>
@@ -15,10 +15,8 @@
     <java.version>11</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <kotlin.version>1.4.30</kotlin.version>
-    <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
 
-    <axon-framework.version>4.4.7</axon-framework.version>
+    <axon-framework.version>4.4.8</axon-framework.version>
   </properties>
 
   <dependencyManagement>
@@ -150,7 +148,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.4.20</version>
+          <version>1.4.30</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -219,7 +217,7 @@
         <plugin>
           <groupId>com.amashchenko.maven.plugin</groupId>
           <artifactId>gitflow-maven-plugin</artifactId>
-          <version>1.15.1</version>
+          <version>1.16.0</version>
           <configuration>
             <gitFlowConfig>
               <productionBranch>master</productionBranch>

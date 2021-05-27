@@ -4,7 +4,7 @@
 
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
-  <version>4.5.1</version>
+  <version>4.5.2-SNAPSHOT</version>
   <name>${project.artifactId}</name>
   <description>Bill of Material for axon framework libs</description>
   <url>https://github.com/holixon/axon-framework-bom/</url>

@@ -4,7 +4,7 @@
 
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
-  <version>4.5.0</version>
+  <version>4.5.1</version>
   <name>${project.artifactId}</name>
   <description>Bill of Material for axon framework libs</description>
   <url>https://github.com/holixon/axon-framework-bom/</url>
@@ -16,7 +16,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <axon-framework.version>4.5</axon-framework.version>
+    <axon-framework.version>4.5.1</axon-framework.version>
   </properties>
 
   <dependencyManagement>
@@ -127,7 +127,7 @@
         <plugin>
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.6</version>
+          <version>0.8.7</version>
           <executions>
             <execution>
               <id>pre-unit-test</id>
@@ -148,7 +148,7 @@
         <plugin>
           <groupId>org.jetbrains.dokka</groupId>
           <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.4.30</version>
+          <version>1.4.32</version>
           <executions>
             <execution>
               <id>attach-javadocs</id>
@@ -239,7 +239,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-gpg-plugin</artifactId>
-          <version>1.6</version>
+          <version>3.0.1</version>
           <configuration>
             <keyname>${gpg.keyname}</keyname>
             <gpgArguments>

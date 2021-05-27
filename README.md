@@ -17,7 +17,7 @@ your `dependencies` declarations.
 <dependency>
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
-  <version>4.4.8</version>
+  <version>4.5.0</version>
   <type>pom</type>
   <scope>import</scope>
 </dependency>
@@ -27,7 +27,7 @@ your `dependencies` declarations.
 
 ```kotlin
 dependencies {
-  implementation(platform("io.holixon.axon:axon-framework-bom:4.4.8"))
+  implementation(platform("io.holixon.axon:axon-framework-bom:4.5.0"))
 }
 ```
 

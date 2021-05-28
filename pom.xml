@@ -222,7 +222,7 @@
 
   <profiles>
     <!--
-      Profile creating all artifacts: JARs, POMs, Sources, JavaDoc and all signatures.
+      Profile creating the artifacts: POM, and signature.
     -->
     <profile>
       <id>release</id>

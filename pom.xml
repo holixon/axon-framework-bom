@@ -5,17 +5,13 @@
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
   <version>4.5.1</version>
+  <packaging>pom</packaging>
+
   <name>${project.artifactId}</name>
-  <description>Bill of Material for axon framework libs</description>
+  <description>Bill of Material for Axon Framework artifacts only.</description>
   <url>https://github.com/holixon/axon-framework-bom/</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>11</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
-
     <axon-framework.version>4.5.1</axon-framework.version>
   </properties>
 
@@ -97,22 +93,8 @@
     </dependencies>
   </dependencyManagement>
 
-  <repositories>
-    <repository>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>bintray.kotlin.eap</id>
-      <name>Bintray Kotlin EAP Repository</name>
-      <url>https://dl.bintray.com/kotlin/kotlin-eap</url>
-    </repository>
-  </repositories>
-
   <build>
-    <defaultGoal>clean jacoco:prepare-agent package</defaultGoal>
+    <defaultGoal>clean package</defaultGoal>
 
     <pluginManagement>
       <plugins>
@@ -121,96 +103,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
-        </plugin>
-
-        <!-- Coverage metering -->
-        <plugin>
-          <groupId>org.jacoco</groupId>
-          <artifactId>jacoco-maven-plugin</artifactId>
-          <version>0.8.7</version>
-          <executions>
-            <execution>
-              <id>pre-unit-test</id>
-              <goals>
-                <goal>prepare-agent</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>pre-integration-test</id>
-              <goals>
-                <goal>prepare-agent-integration</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- JavaDoc for Java and KDoc for Kotlin -->
-        <plugin>
-          <groupId>org.jetbrains.dokka</groupId>
-          <artifactId>dokka-maven-plugin</artifactId>
-          <version>1.4.32</version>
-          <executions>
-            <execution>
-              <id>attach-javadocs</id>
-              <phase>package</phase>
-              <goals>
-                <goal>dokka</goal>
-                <goal>javadocJar</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <sourceLinks>
-              <link>
-                <path>${project.basedir}</path>
-                <url>https://github.com/holixon/axon-framework-bom/blob/master</url>
-                <lineSuffix>#L</lineSuffix>
-              </link>
-            </sourceLinks>
-            <jdkVersion>11</jdkVersion>
-            <sourceDirectories>
-              <dir>${project.basedir}/src/main/kotlin</dir>
-            </sourceDirectories>
-          </configuration>
-        </plugin>
-        <!-- Source from kotlin -->
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>3.2.0</version>
-          <executions>
-            <execution>
-              <phase>generate-sources</phase>
-              <goals>
-                <goal>add-source</goal>
-              </goals>
-              <configuration>
-                <sources>
-                  <source>${project.basedir}/src/main/kotlin</source>
-                </sources>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-
-        <!-- attach sources -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>3.2.1</version>
-          <executions>
-            <execution>
-              <id>attach-sources</id>
-              <phase>package</phase>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-              <configuration>
-                <attach>true</attach>
-                <forceCreation>true</forceCreation>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
 
         <!-- gitflow -->
@@ -241,7 +133,6 @@
           <artifactId>maven-gpg-plugin</artifactId>
           <version>3.0.1</version>
           <configuration>
-            <keyname>${gpg.keyname}</keyname>
             <gpgArguments>
               <arg>--batch</arg>
               <arg>--yes</arg>
@@ -323,10 +214,6 @@
 
     <plugins>
       <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
@@ -348,18 +235,6 @@
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.jetbrains.dokka</groupId>
-            <artifactId>dokka-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>build-helper-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
           </plugin>
           <plugin>
@@ -374,7 +249,7 @@
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
 
@@ -400,29 +275,6 @@
     </repository>
   </distributionManagement>
 
-  <pluginRepositories>
-    <!-- required for Dokka (KDoc) and Orchid (Docs) -->
-    <pluginRepository>
-      <id>jcenter</id>
-      <name>JCenter</name>
-      <url>https://jcenter.bintray.com/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </pluginRepository>
-    <pluginRepository>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>bintray.kotlin.eap</id>
-      <name>Bintray Kotlin EAP Repository</name>
-      <url>https://dl.bintray.com/kotlin/kotlin-eap</url>
-    </pluginRepository>
-  </pluginRepositories>
-
   <developers>
     <developer>
       <name>Jan Galinski</name>
@@ -433,6 +285,15 @@
       <organization>Holisticon AG</organization>
       <organizationUrl>https://holisticon.de</organizationUrl>
     </developer>
+    <developer>
+      <name>Simon Zambrovski</name>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <organization>Holisticon AG</organization>
+      <organizationUrl>https://holisticon.de</organizationUrl>
+    </developer>
+
   </developers>
 
 </project>

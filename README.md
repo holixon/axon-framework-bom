@@ -17,7 +17,7 @@ your `dependencies` declarations.
 <dependency>
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
-  <version>4.5.1</version>
+  <version>4.5.2</version>
   <type>pom</type>
   <scope>import</scope>
 </dependency>

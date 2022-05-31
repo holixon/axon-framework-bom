@@ -4,7 +4,7 @@
 
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
-  <version>4.5.3-SNAPSHOT</version>
+  <version>4.5.10-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>${project.artifactId}</name>
@@ -12,7 +12,7 @@
   <url>https://github.com/holixon/axon-framework-bom/</url>
 
   <properties>
-    <axon-framework.version>4.5.8</axon-framework.version>
+    <axon-framework.version>4.5.10</axon-framework.version>
   </properties>
 
   <dependencyManagement>

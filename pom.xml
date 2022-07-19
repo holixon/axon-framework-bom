@@ -4,7 +4,7 @@
 
   <groupId>io.holixon.axon</groupId>
   <artifactId>axon-framework-bom</artifactId>
-  <version>4.5.10</version>
+  <version>4.5.14</version>
   <packaging>pom</packaging>
 
   <name>${project.artifactId}</name>
@@ -12,7 +12,7 @@
   <url>https://github.com/holixon/axon-framework-bom/</url>
 
   <properties>
-    <axon-framework.version>4.5.10</axon-framework.version>
+    <axon-framework.version>4.5.14</axon-framework.version>
   </properties>
 
   <dependencyManagement>
@@ -192,7 +192,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.1.0</version>
           <executions>
             <execution>
               <id>enforce-maven</id>

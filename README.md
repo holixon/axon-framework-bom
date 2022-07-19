@@ -2,6 +2,7 @@
 
 Bill of Material for axon-framework libs
 
+[![stable](https://img.shields.io/badge/lifecycle-STABLE-green.svg)](https://github.com/holisticon#open-source-lifecycle)
 [![Build Status](https://github.com/holixon/axon-framework-bom/workflows/Development%20branches/badge.svg)](https://github.com/holixon/axon-framework-bom/actions)
 [![sponsored](https://img.shields.io/badge/sponsoredBy-Holisticon-RED.svg)](https://holisticon.de/)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.holixon.axon/axon-framework-bom/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.holixon.axon/axon-framework-bom)

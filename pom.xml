@@ -12,7 +12,7 @@
   <url>https://github.com/holixon/axon-framework-bom/</url>
 
   <properties>
-    <axon-framework.version>4.5.14</axon-framework.version>
+    <axon-framework.version>4.5.15</axon-framework.version>
   </properties>
 
   <dependencyManagement>
